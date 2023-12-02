@@ -35,48 +35,42 @@
             </div>
         </div>
         <div class="notes">
-          <div cla
-            <textarea name="writing" cols="30" rows="10" class="writing" id="writing"></textarea>
-            <button id = "start">Start STT</button>
-            <button id = "stop">Stop STT</button>
-            <button onclick="convertToSpeech()">Convert to Speech</button>
+          <textarea name="writing" cols="30" rows="10" class="writing" id="writing"></textarea>
+          <button id="start">Start STT</button>
+          <button id="stop">Stop STT</button>
+          <button onclick="convertToSpeech()">Convert to Speech</button>
 
-            <select id="selectLanguage">
-              <option value="en">English</option>
-              <option value="es">Spanish</option>
-              <option value="fr">French</option>
-              <option value="zh">Chinese</option>
-              <option value="ru">Russian</option>
-              <option value="ja">Japansese</option>
-              <option value="ar">Arabic</option>
-              <option value="pt">Portugese</option>
-              <option value="hi">Hindi</option>
-              <option value="pa">Punjabi</option>
-              <option value="ur">Urdu</option>
-              <!-- Add more language options -->
-            </select>
+          <select id="selectLanguage">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="ru">Russian</option>
+            <option value="pt">Portuguese</option>
+          </select>
 
-            <button onclick="translateText()">Translate</button>
-        
-            <script type="text/javascript">
-              const startButton = document.getElementById('start');
-              const stopButton = document.getElementById('stop');
-              const resultElement = document.getElementById('writing');
+          <button onclick="translateText()">Translate</button>
+          <!-- Add the Save button -->
+          <button onclick="saveCurrentFile()">Save</button>
+      
+          <script type="text/javascript">
+            const startButton = document.getElementById('start');
+            const stopButton = document.getElementById('stop');
+            const resultElement = document.getElementById('writing');
 
-              const recognition = new webkitSpeechRecognition();
+            const recognition = new webkitSpeechRecognition();
 
-              recognition.lang = window.navigator.language;
-              recognition.interimResults = true;
+            recognition.lang = window.navigator.language;
+            recognition.interimResults = true;
 
-              startButton.addEventListener('click', () => { recognition.start(); });
-              stopButton.addEventListener('click', () => { recognition.stop(); });
+            startButton.addEventListener('click', () => { recognition.start(); });
+            stopButton.addEventListener('click', () => { recognition.stop(); });
 
-              recognition.addEventListener('result', (event) => {
-                const result = event.results[event.results.length - 1][0].transcript;
-                resultElement.textContent = result;
-              });
-            </script>
+            recognition.addEventListener('result', (event) => {
+              const result = event.results[event.results.length - 1][0].transcript;
+              resultElement.textContent = result;
+            });
+          </script>
         </div>
     </body>
-      <script src="script.js"></script>
+    <script src="script.js"></script>
 </html>

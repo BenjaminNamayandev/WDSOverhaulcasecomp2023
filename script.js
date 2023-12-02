@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", attachListeners);
 document.addEventListener("DOMContentLoaded", checkPage);
 
+// Initialize current file name
+let currentFileName = '';
+
 function attachListeners() {
     document.querySelector('.login_form')?.addEventListener('submit', login);
     let logoutButton = document.querySelector('.logout');
@@ -12,14 +15,64 @@ function attachListeners() {
     if (addButton) {
         addButton.addEventListener('click', addFile);
     }
+
+    // Load existing files from localStorage
+    loadFiles();
 }
 
 function addFile() {
     let filebar = document.querySelector('.files');
     let newFileButton = document.createElement('button');
-    newFileButton.textContent = window.prompt("Name the file: ","Enter name here");
-    newFileButton.addEventListener('click', () => console.log("Go to new note"));
-    filebar.appendChild(newFileButton);
+    let fileName = window.prompt("Name the file:", "Enter name here");
+    
+    // Check if the file name is not empty
+    if (fileName) {
+        newFileButton.textContent = fileName;
+        newFileButton.addEventListener('click', () => {
+            // Set current file name when switching files
+            currentFileName = fileName;
+            loadNotes();
+        });
+        filebar.appendChild(newFileButton);
+
+        // Save files to localStorage
+        saveFiles();
+    }
+}
+
+function loadFiles() {
+    let files = JSON.parse(localStorage.getItem('files')) || [];
+    let filebar = document.querySelector('.files');
+
+    // Clear existing file buttons
+    filebar.innerHTML = '';
+
+    // Load files from localStorage
+    files.forEach(fileName => {
+        let newFileButton = document.createElement('button');
+        newFileButton.textContent = fileName;
+        newFileButton.addEventListener('click', () => {
+            // Set current file name when switching files
+            currentFileName = fileName;
+            loadNotes();
+        });
+        filebar.appendChild(newFileButton);
+    });
+}
+
+function saveFiles() {
+    let files = Array.from(document.querySelectorAll('.files button')).map(button => button.textContent);
+    localStorage.setItem('files', JSON.stringify(files));
+}
+
+function loadNotes() {
+    let notes = JSON.parse(localStorage.getItem(currentFileName)) || '';
+    document.getElementById('writing').value = notes;
+}
+
+function saveNotes() {
+    let notes = document.getElementById('writing').value;
+    localStorage.setItem(currentFileName, JSON.stringify(notes));
 }
 
 function checkPage() {
@@ -47,7 +100,7 @@ function logout(event) {
     localStorage.removeItem('username');
     localStorage.removeItem('password');
     window.location.href = 'login.html';
-}
+} 
 
 function translateText() {
     const inputTextarea = document.getElementById('writing');
@@ -90,3 +143,12 @@ function convertToSpeech() {
         alert('Text-to-speech is not supported in your browser. Please use a modern browser.');
     }
   }
+
+// Event listener for writing text area changes
+document.getElementById('writing').addEventListener('input', saveNotes);
+
+// Save current file function
+function saveCurrentFile() {
+    saveNotes();
+    alert('File saved successfully!');
+}

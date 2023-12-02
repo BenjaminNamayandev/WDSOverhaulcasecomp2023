@@ -36,8 +36,9 @@
         </div>
         <div class="notes">
             <textarea name="writing" cols="30" rows="10" class="writing" id="writing"></textarea>
-            <button id = "start">Start</button>
-            <button id = "stop">Stop</button>
+            <button id = "start">Start STT</button>
+            <button id = "stop">Stop STT</button>
+            <button onclick="convertToSpeech()">Convert to Speech</button>
         
             <script type="text/javascript">
               var startButton = document.getElementById('start');
@@ -56,6 +57,20 @@
                 const result = event.results[event.results.length - 1][0].transcript;
                 resultElement.textContent = result;
               });
+              
+              function convertToSpeech() {
+                const writing = document.getElementById('writing').value;
+
+                if ('speechSynthesis' in window) {
+                    const synthesis = window.speechSynthesis;
+
+                    const utterance = new SpeechSynthesisUtterance(writing);
+
+                    synthesis.speak(utterance);
+                } else {
+                    alert('Text-to-speech is not supported in your browser. Please use a modern browser.');
+                }
+            }
             </script>
         </div>
     </div>

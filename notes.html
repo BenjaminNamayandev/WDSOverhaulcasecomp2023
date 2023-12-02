@@ -35,7 +35,28 @@
             </div>
         </div>
         <div class="notes">
-            <textarea name="writing" cols="30" rows="10" class="writing"></textarea>
+            <textarea name="writing" cols="30" rows="10" class="writing" id="writing"></textarea>
+            <button id = "start">Start</button>
+            <button id = "stop">Stop</button>
+        
+            <script type="text/javascript">
+              var startButton = document.getElementById('start');
+              var stopButton = document.getElementById('stop');
+              var resultElement = document.getElementById('writing');
+        
+              var recognition = new webkitSpeechRecognition();
+        
+              recognition.lang = window.navigator.language;
+              recognition.interimResults = true;
+        
+              startButton.addEventListener('click', () => { recognition.start(); });
+              stopButton.addEventListener('click', () => { recognition.stop(); });
+        
+              recognition.addEventListener('result', (event) => {
+                const result = event.results[event.results.length - 1][0].transcript;
+                resultElement.textContent = result;
+              });
+            </script>
         </div>
     </div>
   </body>

@@ -50,68 +50,22 @@
             <button onclick="translateText()">Translate</button>
         
             <script type="text/javascript">
-              //MAKE THIS INTO A FUNCTION*********************************
               const startButton = document.getElementById('start');
               const stopButton = document.getElementById('stop');
               const resultElement = document.getElementById('writing');
-        
+
               const recognition = new webkitSpeechRecognition();
-        
+
               recognition.lang = window.navigator.language;
               recognition.interimResults = true;
-        
+
               startButton.addEventListener('click', () => { recognition.start(); });
               stopButton.addEventListener('click', () => { recognition.stop(); });
-        
+
               recognition.addEventListener('result', (event) => {
                 const result = event.results[event.results.length - 1][0].transcript;
-                resultElement.value += `${result} `;
+                resultElement.textContent = result;
               });
-              //***********************************************************
-              
-              function convertToSpeech() {
-                const writing = document.getElementById('writing').value;
-
-                if ('speechSynthesis' in window) {
-                    const synthesis = window.speechSynthesis;
-
-                    const utterance = new SpeechSynthesisUtterance(writing);
-
-                    synthesis.speak(utterance);
-                } else {
-                    alert('Text-to-speech is not supported in your browser. Please use a modern browser.');
-                }
-              }
-
-              function translateText() {
-                const inputTextarea = document.getElementById('writing');
-                const selectLanguage = document.getElementById('selectLanguage');
-                const outputText = document.getElementById('outputText');
-
-                const apiKey = 'AIzaSyDJ5ou-M_JhYJi0HMkLOzq4v9Kfje-Frio'; 
-                const targetLanguage = selectLanguage.value;
-                const textToTranslate = inputTextarea.value;
-
-                fetch(`https://translation.googleapis.com/language/translate/v2?key=${apiKey}`, {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    q: textToTranslate,
-                    target: targetLanguage,
-                  }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                  const translatedText = data.data.translations[0].translatedText;
-                  inputTextarea.value = JSON.stringify(translatedText);
-                })
-                .catch(error => {
-                  console.error('Error translating text:', error);
-                  outputText.innerHTML = 'Error translating text. Please try again.';
-                });
-              }
             </script>
         </div>
     </div>

@@ -39,14 +39,23 @@
             <button id = "start">Start STT</button>
             <button id = "stop">Stop STT</button>
             <button onclick="convertToSpeech()">Convert to Speech</button>
+
+            <select id="selectLanguage">
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <!-- Add more language options -->
+            </select>
+
+            <button onclick="translateText()">Translate</button>
         
             <script type="text/javascript">
               //MAKE THIS INTO A FUNCTION*********************************
-              var startButton = document.getElementById('start');
-              var stopButton = document.getElementById('stop');
-              var resultElement = document.getElementById('writing');
+              const startButton = document.getElementById('start');
+              const stopButton = document.getElementById('stop');
+              const resultElement = document.getElementById('writing');
         
-              var recognition = new webkitSpeechRecognition();
+              const recognition = new webkitSpeechRecognition();
         
               recognition.lang = window.navigator.language;
               recognition.interimResults = true;
@@ -72,7 +81,37 @@
                 } else {
                     alert('Text-to-speech is not supported in your browser. Please use a modern browser.');
                 }
-            }
+              }
+
+              function translateText() {
+                const inputTextarea = document.getElementById('writing');
+                const selectLanguage = document.getElementById('selectLanguage');
+                const outputText = document.getElementById('outputText');
+
+                const apiKey = 'AIzaSyDJ5ou-M_JhYJi0HMkLOzq4v9Kfje-Frio'; 
+                const targetLanguage = selectLanguage.value;
+                const textToTranslate = inputTextarea.value;
+
+                fetch(`https://translation.googleapis.com/language/translate/v2?key=${apiKey}`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    q: textToTranslate,
+                    target: targetLanguage,
+                  }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                  const translatedText = data.data.translations[0].translatedText;
+                  inputTextarea.value = JSON.stringify(translatedText);
+                })
+                .catch(error => {
+                  console.error('Error translating text:', error);
+                  outputText.innerHTML = 'Error translating text. Please try again.';
+                });
+              }
             </script>
         </div>
     </div>

@@ -17,7 +17,7 @@ function attachListeners() {
 function addFile() {
     let filebar = document.querySelector('.files');
     let newFileButton = document.createElement('button');
-    newFileButton.textContent = 'My New File';
+    newFileButton.textContent = window.prompt("Name the file: ","Enter name here");
     newFileButton.addEventListener('click', () => console.log("Go to new note"));
     filebar.appendChild(newFileButton);
 }

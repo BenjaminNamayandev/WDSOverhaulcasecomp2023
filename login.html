@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,14 +24,45 @@
           <a href="login.html">Login</a>
           <a href="download.html" class="btn">Download</a>
         </div>
-      </div>
-    <div class="main">
-        <form class="login_form">
-            <input type="username" placeholder="Username...">
-            <input type="password" placeholder="Password...">
-            <input type="submit" value="Log In">
-        </form>
-    </div>
+      </div>     
   </body>
-  <script src="script.js"></script>
+  <body>
+    <h1>Login</h1>
+    <form id="loginForm">
+
+        <input type="username" placeholder="Username..." required>
+        <input type="password" placeholder="Password..." required>
+
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <script>
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Retrieve user data from local storage
+            var userData = JSON.parse(localStorage.getItem('userData')) || {};
+
+            // Check if the entered username exists
+            if (userData.hasOwnProperty(username)) {
+                // Check if the entered password is correct
+                if (userData[username] === password) {
+                    alert('Login successful! Redirecting to the home page.');
+                    
+                    // Redirect to the home page after a successful login
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Incorrect password. Please try again.');
+                }
+            } else {
+                alert('Username does not exist. Please register.');
+            }
+        }
+
+        function clearText(elementId) {
+            document.getElementById(elementId).placeholder = '';
+        }
+    </script>
+  </body>
 </html>

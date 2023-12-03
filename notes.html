@@ -21,7 +21,7 @@
         <div class="general">
           <a href="help.html">Help</a>
           <a href="index.html" class="logout">Logout</a>
-          <a download="notes.html" class="btn">Download</a>
+          <a class="btn" onclick="downloadNotes()">Download</a>
         </div>
       </div>
 
@@ -82,7 +82,7 @@
 
       recognition.addEventListener('result', (event) => {
         const result = event.results[event.results.length - 1][0].transcript;
-        resultElement.value += `${result} `;
+        resultElement.value = `${result} `;
       });
 
     </script>

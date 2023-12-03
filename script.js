@@ -184,10 +184,8 @@ function convertToSpeech() {
     }
 }
 
-// Event listener for writing text area changes
 document.getElementById('writing').addEventListener('input', saveNotes);
-
-// Save current file function
+n
 function saveCurrentFile() {
     saveNotes();
     alert('File saved successfully!');
@@ -199,4 +197,16 @@ function changeFontSize() {
   
   const newSize = fontSizeInput.value + 'px';
   writing.style.fontSize = newSize;
+}
+
+
+function downloadNotes() {
+    const notesContent = '<html><head><title>My Notes</title></head><body><h1>Hello, these are my notes!</h1></body></html>';
+    const blob = new Blob([notesContent], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'notes.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }

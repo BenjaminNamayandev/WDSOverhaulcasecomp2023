@@ -7,6 +7,13 @@ document.getElementById("writing").disabled = true;
 let currentFileName = '';
 
 function attachListeners() {
+    document.addEventListener('keydown', function(event) {
+        // Check if the pressed key is Numpad 0 (key code 96)
+        if (event.key === '0') {
+            convertToSpeech();
+        }
+    });
+
     document.querySelector('.login_form')?.addEventListener('submit', login);
     let logoutButton = document.querySelector('.logout');
     if (logoutButton) {

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,7 +22,7 @@
         <div class="general">
           <a href="help.html">Help</a>
           <a href="login.html">Login</a>
-          <a href="download.html" download='notes.html' class="btn">Download</a>
+          <a href="download.html" class="btn">Download</a>
         </div>
       </div>     
   </body>
@@ -47,10 +48,10 @@
             if (userData.hasOwnProperty(username)) {
                 // Check if the entered password is correct
                 if (userData[username] === password) {
-                    alert('Login successful! Redirecting to the home page.');
+                    alert('Login successful!');
                     
                     // Redirect to the home page after a successful login
-                    window.location.href = 'index.html';
+                    window.location.href = 'notes.html';
                 } else {
                     alert('Incorrect password. Please try again.');
                 }
@@ -64,5 +65,4 @@
         }
     </script>
   </body>
-  <script src="script.js"></script>
 </html>

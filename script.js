@@ -189,8 +189,8 @@ function saveCurrentFile() {
 
 function changeFontSize() {
   const fontSizeInput = document.getElementById('fontSizeInput');
-  const writing = document.getElementById('content');
+  const writing = document.getElementById('writing');
   
   const newSize = fontSizeInput.value + 'px';
-  content.style.fontSize = newSize;
+  writing.style.fontSize = newSize;
 }

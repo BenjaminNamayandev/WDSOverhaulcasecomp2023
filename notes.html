@@ -77,7 +77,7 @@
 
       recognition.addEventListener('result', (event) => {
         const result = event.results[event.results.length - 1][0].transcript;
-        resultElement.value = ` ${result} `;
+        resultElement.value += ` ${result} `;
       });
 
     </script>

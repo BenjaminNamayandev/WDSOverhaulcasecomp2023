@@ -18,6 +18,7 @@
           <a href="individuals.html">For Individuals</a>
           <a href="mission.html">Mission</a>
         </div>
+        <img src="assets/splash-img.png" class="splash" />
         <div class="general">
           <a href="help.html">Help</a>
           <a href="login.html">Login</a>
@@ -25,7 +26,93 @@
         </div>
       </div>
     <div class="main">
-        Pricing
+
     </div>
   </body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .pricing-container {
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .pricing-option {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            width: 30%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .pricing-option:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="pricing-container">
+    <div class="pricing-option">
+        <h2>Basic Plan</h2>
+        <p>Perfect for individuals</p>
+        <p class="price">$19.99/month</p>
+        <a href="#" style="color: #fff; text-decoration: none;">Sign Up</a>
+    </div>
+
+    <div class="pricing-option">
+        <h2>Pro Plan</h2>
+        <p>Great for small businesses</p>
+        <p class="price">$49.99/month</p>
+        <a href="#" style="color: #fff; text-decoration: none;">Sign Up</a>
+    </div>
+
+    <div class="pricing-option">
+        <h2>Premium Plan</h2>
+        <p>For large enterprises</p>
+        <p class="price">$99.99/month</p>
+        <a href="#" style="color: #fff; text-decoration: none;">Sign Up</a>
+    </div>
+</div>
+
+</body>
 </html>

@@ -1,96 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>InkLink</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="assets/link.png" type="image/x-icon">
-  </head>
-  <body>
-    <img src="assets/splash-img.png" class="splash" />
-    <div class="navbar">
-        <div class="pages">
-          <img src="assets/logo.png" alt="logo">
-          <a href="index.html">Home</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="teams.html">For Teams</a>
-          <a href="individuals.html">For Individuals</a>
-          <a href="mission.html">Mission</a>
-        </div>
-        <div class="general">
-          <a href="help.html">Help</a>
-          <a href="login.html">Login</a>
-          <a href="download.html" class="btn">Download</a>
-        </div>
-      </div>     
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>InkLink</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="assets/link.png" type="image/x-icon">
   <style>
+    .splash {
+      margin-bottom: 50px;
+    }
+
+    .navbar {
+      /* Add your existing navbar styles here */
+    }
 
     .pricing-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        text-align: center;
-    	margin-top: 100px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      margin-top: 100px;
     }
 
     .pricing-option {
       background-color: #3498db;
       color: #fff;
-        width: 200px;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease-in-out;
+      width: 200px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
     }
+
     .pricing-option:hover {
-            transform: scale(1.05);
-        }
+      transform: scale(1.05);
+    }
 
-        h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
 
-        p {
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
 
-        .price {
-            font-size: 28px;
-            font-weight: bold;
-        }
-</style>
-<title>Centered Pricing</title>
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    #light-bulb {
+      position: fixed;
+      top: 16px;
+      right: 260px;
+      cursor: pointer;
+      font-size: 24px;
+    }
+  </style>
 </head>
 <body>
+    <div class="navbar">
+    <div class="pages">
+      <img src="assets/logo.png" alt="logo">
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="teams.html">For Teams</a>
+      <a href="individuals.html">For Individuals</a>
+      <a href="mission.html">Mission</a>
+    </div>
+    <div class="general">
+      <a href="help.html">Help</a>
+      <a href="login.html">Login</a>
+      <a href="download.html" class="btn">Download</a>
+    </div>
+  </div>
+  <div class="pricing-container">
+    <div class="pricing-option">
+      <h2>Basic Plan</h2>
+      <p>Perfect for individuals</p>
+      <p class="price">$19.99/month</p>
+      <a href="#" style="color: #fff; text-decoration: none;">Sign Up</a>
+    </div>
+    <div class="pricing-option">
+      <h2>Pro Plan</h2>
+      <p>Great for small businesses</p>
+      <p class="price">$49.99/month</p>
+      <a href="#" style="color: #fff; text-decoration: none;">Sign Up</a>
+    </div>
+    <div class="pricing-option">
+      <h2>Premium Plan</h2>
+      <p>For large enterprises</p>
+      <p class="price">$99.99/month</p>
+      <a href="#" style="color: #fff; text-decoration: none;">Sign Up</a>
+    </div>
+  </div>
+  <div id="light-bulb" onclick="toggleDarkMode()">💡</div>
 
-<div class="pricing-container">
-<div class="pricing-option">
-    <h2>Basic Plan</h2>
-    <p>Perfect for individuals</p>
-    <p class="price">$19.99/month</p>
-    <a href="#" style="color: #fff; text-decoration: none;">Sign Up</a>
-</div>
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      const isDarkMode = body.classList.contains('dark-mode');
 
-<div class="pricing-option">
-    <h2>Pro Plan</h2>
-    <p>Great for small businesses</p>
-    <p class="price">$49.99/month</p>
-    <a href="#" style="color: #fff; text-decoration: none;">Sign Up</a>
-</div>
-
-<div class="pricing-option">
-    <h2>Premium Plan</h2>
-    <p>For large enterprises</p>
-    <p class="price">$99.99/month</p>
-    <a href="#" style="color: #fff; text-decoration: none;">Sign Up</a>
-</div>
-</div>
-
+      if (isDarkMode) {
+        body.classList.remove('dark-mode');
+      } else {
+        body.classList.add('dark-mode');
+      }
+    }
+  </script>
 </body>
 </html>

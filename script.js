@@ -187,3 +187,11 @@ function saveCurrentFile() {
     saveNotes();
     alert('File saved successfully!');
 }
+
+function changeFontSize() {
+  const fontSizeInput = document.getElementById('fontSizeInput');
+  const writing = document.getElementById('writing');
+  
+  const newSize = fontSizeInput.value + 'px';
+  writing.style.fontSize = newSize;
+}

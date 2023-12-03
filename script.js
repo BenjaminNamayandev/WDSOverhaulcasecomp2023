@@ -115,7 +115,6 @@ function checkPage() {
           currentFileName = 'My First File';
           loadNotes();
       }
-      window.location = 'login.html';
   }
 }
 
@@ -190,8 +189,8 @@ function saveCurrentFile() {
 
 function changeFontSize() {
   const fontSizeInput = document.getElementById('fontSizeInput');
-  const writing = document.getElementById('writing');
+  const writing = document.getElementById('content');
   
   const newSize = fontSizeInput.value + 'px';
-  writing.style.fontSize = newSize;
+  content.style.fontSize = newSize;
 }

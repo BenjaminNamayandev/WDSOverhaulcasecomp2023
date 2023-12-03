@@ -9,6 +9,7 @@
     <link rel="icon" href="assets/link.png" type="image/x-icon">
   </head>
   <body>
+    <img src="assets/splash-img.png" class="splash" />
     <div class="navbar">
         <div class="pages">
           <img src="assets/logo.png" alt="logo">
@@ -36,12 +37,33 @@
     }
 
     .pricing-option {
+      background-color: #3498db;
+      color: #fff;
         width: 200px;
         padding: 20px;
         border: 1px solid #ddd;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
     }
+    .pricing-option:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+        }
 </style>
 <title>Centered Pricing</title>
 </head>
